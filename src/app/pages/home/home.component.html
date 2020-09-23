@@ -1,0 +1,26 @@
+<nb-layout>
+  <nb-layout-header>
+    <a href="/home">DeckBase</a>
+    <a href="/cards">Cards</a>
+  </nb-layout-header>
+  <nb-layout-column class="colored-column-warning">
+      <app-deck *ngFor="let deck of decks" [deck]="deck"></app-deck>
+  </nb-layout-column>
+  <nb-layout-column class="colored-column-danger">
+    <input type="text" nbInput placeholder="Deck name"/>
+    <nb-select placeholder="Type">
+      <nb-option value="Fire">Fire</nb-option>
+      <nb-option value="Grass">Grass</nb-option>
+      <nb-option value="Water">Water</nb-option>
+      <nb-option value="Electric">Lighting</nb-option>
+      <nb-option value="Normal">Normal</nb-option>
+      <nb-option value="Dark">Dark</nb-option>
+      <nb-option value="Dragon">Dragon</nb-option>
+      <nb-option value="Fighting">Fighting</nb-option>
+      <nb-option value="Fairy">Fairy</nb-option>
+      <nb-option value="Fairy">Psychic</nb-option>
+      <nb-option value="Metal">Metal</nb-option>
+    </nb-select>
+    <button nbButton outline status="primary" size="small">Add deck</button>
+  </nb-layout-column>
+</nb-layout>

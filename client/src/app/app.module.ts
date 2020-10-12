@@ -7,7 +7,6 @@ import { HomeModule } from './pages/home/home.module';
 import { SidebarModule } from './components/sidebar/sidebar.module';
 import { DeckModule } from './components/deck/deck.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CardsModule } from './pages/cards/cards.module';
 
 // Modules
 
@@ -21,7 +20,6 @@ import { CardsModule } from './pages/cards/cards.module';
         NbThemeModule.forRoot({ name: 'cosmic' }),
         NbLayoutModule,
         HomeModule,
-        CardsModule,
         SidebarModule,
         DeckModule,
         HttpClientModule,

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { SidebarModule } from './components/sidebar/sidebar.module';
-import { DeckModule } from './components/deck/deck.module';
 import { HttpClientModule } from '@angular/common/http';
 
 // Modules
@@ -21,7 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
         NbLayoutModule,
         HomeModule,
         SidebarModule,
-        DeckModule,
         HttpClientModule,
   	],
   	providers: [],

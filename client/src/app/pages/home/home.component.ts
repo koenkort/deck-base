@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DeckService } from '../../services/deck.service';
-import { Deck } from '../../interfaces/deck';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +6,14 @@ import { Deck } from '../../interfaces/deck';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  decks: Deck[] = [];
-  constructor(public deckService: DeckService) { }
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.deckService.getDecks().subscribe(data => {
-      this.decks = data;
-      console.log(this.decks);
-    });
+    // this.deckService.getDecks().subscribe(data => {
+    //   this.decks = data;
+    //   console.log(this.decks);
+    // });
   }
 
 }

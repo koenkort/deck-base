@@ -57,6 +57,7 @@ router.delete("/", (req: express.Request, res: express.Response) => {
     const {id} = req.body;
 });
 
+//@route Get api/
 router.get("/", (req: express.Request, res: express.Response) => {
     const {title, author} = req.body;
 })

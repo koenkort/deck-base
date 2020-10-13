@@ -10,10 +10,6 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // this.deckService.getDecks().subscribe(data => {
-    //   this.decks = data;
-    //   console.log(this.decks);
-    // });
   }
 
 }

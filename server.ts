@@ -22,6 +22,8 @@ mongoose.connect(db_url, {
 .then(() => console.log("MongoDB Connected"))
 .catch((err) => console.log(err));
 
+app.use("/api/book", require("./routes/book"));
+
 const PORT = process.env.PORT || 8080;
 
 const server = http.createServer(app);

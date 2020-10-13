@@ -1,24 +1,29 @@
 
 [
   {
-    "name": "Eternatus",
-    "type": "Dark"
+    "id": 1,
+    "title": "test1",
+    "author": "Keon Tork"
   },
   {
-    "name": "Vikavolt & Amoongus",
-    "type": "Lighting/Grass"
+    "id": 2,
+    "title": "test2",
+    "author": "Dana Enkree"
   },
   {
-    "name": "Centiskorch",
-    "type": "Fire"
+    "id": 3,
+    "title": "test3",
+    "author": "Daynn Sum"
   },
   {
-    "name": "Inteleon",
-    "type": "Water"
+    "id": 4,
+    "title": "test4",
+    "author": "Thekenn Sinkmen"
   },
   {
-    "name": "Mew & Mewtwo",
-    "type": "Psychic"
+    "id": 5,
+    "title": "test5",
+    "author": "Henk de Zeeuw"
   }
 ]
 

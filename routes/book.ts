@@ -43,23 +43,23 @@ router.post("/",(req: express.Request, res: express.Response) => {
         })
 
     })
-})
-
-
-//@Route Put api/
-router.put("/", (req: express.Request, res: express.Response) => {
-    const {title, author} = req.body;
-
-});
-
-//@Route Delete api/
-router.delete("/", (req: express.Request, res: express.Response) => {
-    const {id} = req.body;
 });
 
 //@route Get api/
 router.get("/", (req: express.Request, res: express.Response) => {
     const {title, author} = req.body;
-})
+});
+
+
+//@Route Put api/
+// router.put("/", (req: express.Request, res: express.Response) => {
+//     const {title, author} = req.body;
+
+// });
+
+//@Route Delete api/
+// router.delete("/", (req: express.Request, res: express.Response) => {
+//     const {id} = req.body;
+// });
 
 module.exports = router;

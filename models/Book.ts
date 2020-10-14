@@ -1,5 +1,3 @@
-import { Mongoose } from "mongoose";
-
 import mongoose = require('mongoose');
 
 

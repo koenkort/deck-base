@@ -11,6 +11,6 @@ export class BookService {
   constructor(private httpService: HttpClient) {}
 
   getDecks(){
-    
+    return this.httpService.get("localhost:8080/api/book");
   }
 }

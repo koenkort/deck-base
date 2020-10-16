@@ -46,8 +46,8 @@ router.post("/", (req: express.Request, res: express.Response) => {
 
 
 //@Route GetAll
-router.get("/all", (_, res: express.Response) => {
-  const books = Book.find(Book).then((book: Book) => res.json(book));
+router.get("/all", async (_, res: express.Response) => {
+  const books = await Book.find(Book).then((book: Book) => res.json(book));
   return books;
 });
 

@@ -1,3 +1,3 @@
-# deck-base
+# deck-base (Test project)
 
-- Coming soon.
+- Coming soon?

@@ -83,7 +83,10 @@ router.patch("/:bookId", async (req: express.Request, res: express.Response) => 
 router.delete("/delete/:bookId", async (req: express.Request, res: express.Response) => {
     try {
       const removedBook = await Book.remove({_id: req.params.bookId})
-      res.json(removedBook)
+      res.json({
+        message: "Deleted book!",
+        deleted: true
+      })
     } catch(error) {
       console.log(error);
     }

@@ -1,7 +1,10 @@
-import * as express from 'express';
 import * as multer from 'multer';
+
+import * as express from 'express';
+import { Request } from 'express';
+import { Response } from 'express';
+
 import { Book } from '../types';
-import {Request} from 'express'
 
 const multer = require('multer');
 
@@ -24,7 +27,7 @@ interface MulterRequest extends Request {
 }
 
 //@Route POST api/
-router.post("/", upload.single('bookImage'), async (req: Request, res: express.Response) => {
+router.post("/books", upload.single('bookImage'), async (req: Request, res: Response) => {
   const bookImage  = (req as MulterRequest).file;
   const { title, author } = req.body;
 
@@ -71,14 +74,14 @@ router.post("/", upload.single('bookImage'), async (req: Request, res: express.R
 
 
 //@Route GetAll
-router.get("/all", async (_, res: express.Response) => {
+router.get("/books/all", async (_, res: express.Response) => {
   const books = await Book.find(Book).then((book: Book) => res.json(book));
   return books;
 });
 
 
 //@Route GetOne 
-router.get("/:bookId", async (req: express.Request, res: express.Response) => {
+router.get("/books/:bookId", async (req: express.Request, res: express.Response) => {
   try {
     await Book.findById(req.params.bookId);
     res.json({
@@ -91,7 +94,7 @@ router.get("/:bookId", async (req: express.Request, res: express.Response) => {
 });
 
 //@Route Update one
-router.patch("/:bookId", async (req: express.Request, res: express.Response) => {
+router.patch("/books/:bookId", async (req: express.Request, res: express.Response) => {
   try {
     const updatedValues = req.body;
     await Book.updateOne({_id: req.params.bookId}, {...updatedValues});
@@ -105,7 +108,7 @@ router.patch("/:bookId", async (req: express.Request, res: express.Response) => 
 })
 
 // @Route Delete
-router.delete("/delete/:bookId", async (req: express.Request, res: express.Response) => {
+router.delete("/books/delete/:bookId", async (req: express.Request, res: express.Response) => {
     try {
       await Book.remove({_id: req.params.bookId})
       res.json({

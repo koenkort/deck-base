@@ -55,7 +55,7 @@ router.get("/all", async (_, res: express.Response) => {
 //@Route GetOne 
 router.get("/:bookId", async (req: express.Request, res: express.Response) => {
   try {
-    const book = await Book.findById(req.params.bookId);
+    await Book.findById(req.params.bookId);
     res.json({
       message: "Fetched a book!",
       receivedOne: true,
@@ -69,7 +69,7 @@ router.get("/:bookId", async (req: express.Request, res: express.Response) => {
 router.patch("/:bookId", async (req: express.Request, res: express.Response) => {
   try {
     const updatedValues = req.body;
-    const editedBook = await Book.updateOne({_id: req.params.bookId}, {...updatedValues});
+    await Book.updateOne({_id: req.params.bookId}, {...updatedValues});
     res.json({
       message: "Updated book!",
       updated: true
@@ -82,7 +82,7 @@ router.patch("/:bookId", async (req: express.Request, res: express.Response) => 
 // @Route Delete
 router.delete("/delete/:bookId", async (req: express.Request, res: express.Response) => {
     try {
-      const removedBook = await Book.remove({_id: req.params.bookId})
+      await Book.remove({_id: req.params.bookId})
       res.json({
         message: "Deleted book!",
         deleted: true

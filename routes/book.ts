@@ -1,13 +1,16 @@
 import * as express from 'express';
 import * as multer from 'multer';
-import { Book } from "../types";
+import { Book } from '../types';
+import {Request} from 'express'
+
+const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
       cb(null, './uploads/');
   },
   filename: function(req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname);
+    cb(null, file.originalname);
   }
 });
 
@@ -16,12 +19,19 @@ const upload = multer( {storage: storage} );
 
 const Book = require("../models/Book");
 
+interface MulterRequest extends Request {
+  file: any;
+}
+
 //@Route POST api/
-router.post("/", upload.single('bookImage'), (req: express.Request, res: express.Response) => {
-  const { title, author, bookImage } = req.body;
+router.post("/", upload.single('bookImage'), async (req: Request, res: express.Response) => {
+  const bookImage  = (req as MulterRequest).file;
+  const { title, author } = req.body;
+
+  console.log(bookImage)
 
   //Field validation
-  if (!title || !author) {
+  if (!title || !author || !bookImage) {
     return res.status(400).json({
       error: {
         message: "Please enter all fields",
@@ -38,12 +48,13 @@ router.post("/", upload.single('bookImage'), (req: express.Request, res: express
         },
       });
     }
-
     const newBook = new Book({
       title,
       author,
       bookImage,
     });
+
+    console.log("newBook: ", newBook);
 
     newBook.save().then((book) => {
       res.json({
@@ -51,7 +62,7 @@ router.post("/", upload.single('bookImage'), (req: express.Request, res: express
           id: book._id,
           title: book.title,
           author: book.author,
-          bookImage: book.bookImage
+          bookImage
         },
       });
     });

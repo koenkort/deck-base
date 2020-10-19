@@ -6,8 +6,6 @@ import { Response } from 'express';
 
 import { Book } from '../types';
 
-const multer = require('multer');
-
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
       cb(null, './uploads/');

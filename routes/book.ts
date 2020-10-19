@@ -1,4 +1,5 @@
 import * as express from "express";
+import * as multer from "multer";
 import { Book } from "../types";
 
 const router = express.Router({ mergeParams: true });

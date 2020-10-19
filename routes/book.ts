@@ -1,7 +1,7 @@
-import express = require("express");
+import * as express from "express";
 import { Book } from "../types";
-const router = express.Router({ mergeParams: true });
 
+const router = express.Router({ mergeParams: true });
 const Book = require("../models/Book");
 
 //@Route POST api/

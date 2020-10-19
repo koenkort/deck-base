@@ -29,8 +29,6 @@ router.post("/books", upload.single('bookImage'), async (req: Request, res: Resp
   const bookImage  = (req as MulterRequest).file;
   const { title, author } = req.body;
 
-  console.log(bookImage)
-
   //Field validation
   if (!title || !author || !bookImage) {
     return res.status(400).json({
@@ -54,8 +52,6 @@ router.post("/books", upload.single('bookImage'), async (req: Request, res: Resp
       author,
       bookImage,
     });
-
-    console.log("newBook: ", newBook);
 
     newBook.save().then((book) => {
       res.json({

@@ -10,7 +10,7 @@ const BookSchema = new mongoose.Schema({
         required: true
     },
     bookImage: {
-       type: Object,
+        type: Object,
     }
 })
 

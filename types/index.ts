@@ -1,4 +1,5 @@
 export interface Book {
     title: String;
-    author: String
+    author: String;
+    bookImage: String;
 }

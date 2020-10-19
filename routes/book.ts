@@ -1,13 +1,24 @@
-import * as express from "express";
-import * as multer from "multer";
+import * as express from 'express';
+import * as multer from 'multer';
 import { Book } from "../types";
 
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+      cb(null, './uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
+
 const router = express.Router({ mergeParams: true });
+const upload = multer( {storage: storage} );
+
 const Book = require("../models/Book");
 
 //@Route POST api/
-router.post("/", (req: express.Request, res: express.Response) => {
-  const { title, author } = req.body;
+router.post("/", upload.single('bookImage'), (req: express.Request, res: express.Response) => {
+  const { title, author, bookImage } = req.body;
 
   //Field validation
   if (!title || !author) {
@@ -31,6 +42,7 @@ router.post("/", (req: express.Request, res: express.Response) => {
     const newBook = new Book({
       title,
       author,
+      bookImage,
     });
 
     newBook.save().then((book) => {
@@ -39,6 +51,7 @@ router.post("/", (req: express.Request, res: express.Response) => {
           id: book._id,
           title: book.title,
           author: book.author,
+          bookImage: book.bookImage
         },
       });
     });

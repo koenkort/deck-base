@@ -1,6 +1,5 @@
 import mongoose = require('mongoose');
 
-
 const BookSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -9,6 +8,10 @@ const BookSchema = new mongoose.Schema({
     author: {
         type: String,
         required: true
+    },
+    bookImage: {
+        type: String,
+        required: false
     }
 })
 

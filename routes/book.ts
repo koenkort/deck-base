@@ -25,7 +25,7 @@ interface MulterRequest extends Request {
 }
 
 //@Route POST api/
-router.post("/books", upload.single('bookImage'), async (req: Request, res: Response) => {
+router.post("/", upload.single('bookImage'), async (req: Request, res: Response) => {
   const bookImage  = (req as MulterRequest).file;
   const { title, author } = req.body;
 
@@ -68,14 +68,14 @@ router.post("/books", upload.single('bookImage'), async (req: Request, res: Resp
 
 
 //@Route GetAll
-router.get("/books/all", async (_, res: express.Response) => {
+router.get("/all", async (_, res: express.Response) => {
   const books = await Book.find(Book).then((book: Book) => res.json(book));
   return books;
 });
 
 
 //@Route GetOne 
-router.get("/books/:bookId", async (req: express.Request, res: express.Response) => {
+router.get("/:bookId", async (req: express.Request, res: express.Response) => {
   try {
     await Book.findById(req.params.bookId);
     res.json({
@@ -88,7 +88,7 @@ router.get("/books/:bookId", async (req: express.Request, res: express.Response)
 });
 
 //@Route Update one
-router.patch("/books/:bookId", async (req: express.Request, res: express.Response) => {
+router.patch("/:bookId", async (req: express.Request, res: express.Response) => {
   try {
     const updatedValues = req.body;
     await Book.updateOne({_id: req.params.bookId}, {...updatedValues});
@@ -102,7 +102,7 @@ router.patch("/books/:bookId", async (req: express.Request, res: express.Respons
 })
 
 // @Route Delete
-router.delete("/books/delete/:bookId", async (req: express.Request, res: express.Response) => {
+router.delete("/delete/:bookId", async (req: express.Request, res: express.Response) => {
     try {
       await Book.remove({_id: req.params.bookId})
       res.json({
